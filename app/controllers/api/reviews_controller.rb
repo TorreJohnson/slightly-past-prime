@@ -10,6 +10,12 @@ class Api::ReviewsController < ApplicationController
     render json: @reviews
   end
 
+  def movieIndex
+    @movie = Movie.find(params[:movie_id]);
+    @reviews = @movie.reviews
+    render json: @reviews
+  end
+
   def create
     @review = Review.new(review_params)
     if @review.save
